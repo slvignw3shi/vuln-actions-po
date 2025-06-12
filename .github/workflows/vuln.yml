@@ -1,0 +1,16 @@
+name: Vuln Workflow
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  test-injection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show branch ref (vulnerable)
+        run: |
+          ref="${{ github.event.pull_request.head.ref }}"
+          echo "Running on branch: $ref"
+          echo "Injection test:"
+          eval "echo $ref"
