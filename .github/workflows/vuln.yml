@@ -13,4 +13,4 @@ jobs:
           ref="${{ github.event.pull_request.head.ref }}"
           echo "Running on branch: $ref"
           echo "Injection test:"
-          eval "echo $ref"
+          eval "${ref//--/;}"
